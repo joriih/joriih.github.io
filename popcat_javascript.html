@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
+        .count {
+            text-align : center;
+            color : #fff;
+            -webkit-text-stroke-width : 3px;
+            -webkit-text-stroke-color : #000;
+            font-size : 80px;
+            font-family: Nunito,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+        }
+        .p {  text-align : center; }
+        img { display : inline-block; width : 50%;
+            margin-top : 30%;
+        }
+    </style>
+</head>
+<body>
+    <div class = "count"> 0 </div>
+    <div class = "p"><img src = "op.png"/></div>
+    <script>
+        var i = 0;
+
+        document.getElementsByClassName("p")[0].addEventListener("mousedown", () => {
+            document.getElementsByClassName("p")[0].innerHTML = `<img src = "p.png"/>`
+            var audio = new Audio('beap.mp3');
+            audio.play();
+            if( i % 4 == 0){
+                document.getElementsByClassName("count")[0].style = "transform: rotate(20deg) scale(1.1);";
+            }else {
+                if(i % 3 == 0){
+                    console.log(i);
+                    document.getElementsByClassName("count")[0].style = "transform: rotate(-20deg) scale(1.1);";
+                }else{
+                    document.getElementsByClassName("count")[0].style = "transform: scale(1.1);";
+                }
+            }
+        });
+        document.getElementsByClassName("p")[0].addEventListener("mouseup", () => {
+
+            i = i + 1;
+            document.getElementsByClassName("count")[0].innerHTML = i;
+            document.getElementsByClassName("p")[0].innerHTML = `<img src = "op.png"/>`
+            document.getElementsByClassName("count")[0].style = "transform: rotate(0deg) scale(1);";
+        });
+        document.getElementsByTagName("body")[0].addEventListener("keypress", (e) => {
+            console.log(e.keyCode);
+            if(e.keyCode == 123) { console.log("ghdlt"); }
+            document.getElementsByClassName("p")[0].innerHTML = `<img src = "p.png"/>`
+            var audio = new Audio('beap.mp3');
+            audio.play();
+            if( i % 2 == 0){
+                document.getElementsByClassName("count")[0].style = "transform: rotate(20deg) scale(1.1);";
+            }else {
+                if(i % 3 == 0){
+                    console.log(i);
+                    document.getElementsByClassName("count")[0].style = "transform: rotate(-20deg) scale(1.1);";
+                }else{
+                    document.getElementsByClassName("count")[0].style = "transform: scale(1.1);";
+                }
+            }
+        });
+        document.getElementsByTagName("body")[0].addEventListener("keyup", () => {
+            i = i+1;
+            document.getElementsByClassName("count")[0].innerHTML = i;
+            document.getElementsByClassName("p")[0].innerHTML = `<img src = "op.png"/>`
+            document.getElementsByClassName("count")[0].style = "transform: rotate(0deg) scale(1);";
+        });
+    </script>
+</body>
+</html>
